@@ -11,7 +11,7 @@ const ALL_RECIPES = ((recipesData?.recipes ?? [])).map(recipe => ({
   time: String(recipe.time ?? ''),
 }));
 
-const FAVORITES_STORAGE_KEY = 'leanillo_favs';
+const FAVORITES_STORAGE_KEY = 'My_favs';
 
 const readStoredFavorites = () => {
   if (typeof window === 'undefined') return {};
@@ -120,17 +120,6 @@ export default function HomePage() {
     });
   };
 
-  const exportJSON = () => {
-    const payload = JSON.stringify(filtered, null, 2);
-    const blob = new Blob([payload], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'leanillo-recipes-export.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
   // small UI helpers for rendering
   const renderBreadcrumbs = () => (
     <div style={{ display: 'flex', gap: 8, alignItems: 'center', color: '#666' }}>
@@ -145,7 +134,7 @@ export default function HomePage() {
       {/* header area */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 20, marginBottom: 24 }}>
         <div>
-          <h1 style={{ margin: 0, fontSize: 32, color: '#2E8B57' }}>Leanillo Recipes</h1>
+          <h1 style={{ margin: 0, fontSize: 32, color: '#2E8B57' }}>The Best Recipes</h1>
           <p style={{ marginTop: 8, color: '#666' }}>Browse a large curated collection of recipes.</p>
           <div style={{ marginTop: 12 }}>{renderBreadcrumbs()}</div>
         </div>
@@ -154,7 +143,6 @@ export default function HomePage() {
           <button onClick={() => setFavoritesOnly(!favoritesOnly)} style={{ padding: '8px 12px', borderRadius: 8, border: '1px solid #eee', background: favoritesOnly ? '#FFFAF0' : '#fff' }}>
             {favoritesOnly ? 'Showing favorites' : 'All recipes'}
           </button>
-          <button onClick={exportJSON} style={{ padding: '8px 12px', borderRadius: 8, background: '#2E8B57', color: '#fff' }}>Export JSON</button>
         </div>
       </div>
 

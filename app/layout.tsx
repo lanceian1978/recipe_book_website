@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </svg>
               <div>
                 <h1>Recipe Book</h1>
-                <div style={{fontSize:12,color:'#6b7280'}}>50+ hand-picked recipes • easy to follow</div>
+                <div style={{fontSize:12,color:'#6b7280'}}>Only the best hand-picked recipes • easy to follow</div>
               </div>
             </div>
             <div className="searchbar">
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {children}
 
-          <div className="footer">Made with ❤️ — Inspired by recipetineats.com</div>
+          <div className="footer">Made with ❤️ — Created by lance Ian Leanillo</div>
         </main>
       </body>
     </html>
